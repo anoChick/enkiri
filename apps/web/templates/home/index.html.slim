@@ -1,0 +1,7 @@
+p = flash[:success]
+p = flash[:error]
+- if current_user.nil?
+  a(href="/auth/twitter") Login
+- else
+  span = current_user.name
+  img src=current_user.image_url

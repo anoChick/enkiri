@@ -7,12 +7,14 @@ gem 'hanami-model', '~> 1.2'
 gem 'mysql2'
 
 gem 'slim'
+gem 'omniauth-twitter'
 
 group :development do
   # Code reloading
   # See: http://hanamirb.org/guides/projects/code-reloading
   gem 'shotgun', platforms: :ruby
   gem 'hanami-webconsole'
+  gem 'pry'
 end
 
 group :test, :development do

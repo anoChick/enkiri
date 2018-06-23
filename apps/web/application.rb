@@ -81,12 +81,14 @@ module Web
       #
       # See: http://www.rubydoc.info/gems/rack/Rack/Session/Cookie
       #
-      # sessions :cookie, secret: ENV['WEB_SESSIONS_SECRET']
+      sessions :cookie, secret: ENV['WEB_SESSIONS_SECRET']
 
       # Configure Rack middleware for this application
       #
       # middleware.use Rack::Protection
-
+      middleware.use OmniAuth::Builder do
+        provider :twitter, ENV["TWITTER_API_KEY"], ENV["TWITTER_API_SECRET"]
+      end
       # Default format for the requests that don't specify an HTTP_ACCEPT header
       # Argument: A symbol representation of a mime type, defaults to :html
       #
@@ -240,7 +242,7 @@ module Web
         default-src 'none';
         script-src 'self';
         connect-src 'self';
-        img-src 'self' https: data:;
+        img-src 'self' https: data: http://pbs.twimg.com;
         style-src 'self' 'unsafe-inline' https:;
         font-src 'self';
         object-src 'none';
@@ -261,6 +263,7 @@ module Web
       controller.prepare do
         # include MyAuthentication # included in all the actions
         # before :authenticate!    # run an authentication before callback
+        include Web::Authentication
       end
 
       # Configure the code that will yield each time Web::View is included
