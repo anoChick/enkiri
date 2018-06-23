@@ -8,6 +8,7 @@ gem 'mysql2'
 
 gem 'slim'
 gem 'omniauth-twitter'
+gem 'twitter'
 
 group :development do
   # Code reloading

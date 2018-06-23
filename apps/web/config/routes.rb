@@ -6,3 +6,5 @@
 root                             to: 'home#index'
 post '/auth/:provider/callback', to: 'session#create'
 get  '/auth/:provider/callback', to: 'session#create'
+get '/sync', to: 'user#sync'
+post '/tweet', to: 'user#tweet'

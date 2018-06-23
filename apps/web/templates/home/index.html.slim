@@ -3,5 +3,8 @@ p = flash[:error]
 - if current_user.nil?
   a(href="/auth/twitter") Login
 - else
-  span = current_user.name
+  span = "@#{current_user.name}"
   img src=current_user.image_url
+  =form_for :tweet, '/tweet', {methods: 'post'} do
+    = text_area :message
+    = submit('ツイート')

@@ -1,4 +1,3 @@
-require 'pry'
 class UserRepository < Hanami::Repository
   def find_by_uid(uid)
     users.where(uid: uid).one
